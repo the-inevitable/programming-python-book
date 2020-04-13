@@ -1,5 +1,5 @@
 """
-Spawn threads untill "q" is entered at input.
+Spawn threads until "q" is entered at input.
 """
 
 import _thread

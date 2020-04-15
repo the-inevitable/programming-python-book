@@ -8,8 +8,8 @@ def count(my_id, n):
         time.sleep(1)
 
 
-for i in range(5):
-    _thread.start_new_thread(count, (i, 5))
+for j in range(5):
+    _thread.start_new_thread(count, (j, 5))
 
 time.sleep(6)
 print('Main thread exiting.')

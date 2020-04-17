@@ -11,7 +11,7 @@ def counter(my_id, count):
     for i in range(count):
         time.sleep(1)
         mutex.acquire()
-        print(f'[{my_id}] => {i}')
+        print(f'[{my_id}] ==> {i}')
         mutex.release()
 
 

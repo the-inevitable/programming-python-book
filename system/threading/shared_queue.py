@@ -10,7 +10,7 @@ num_consumers = 2
 num_producers = 4
 num_messages = 4
 
-safe_print = _thread.allocate_lock()
+# safe_print = _thread.allocate_lock()
 data_queue = queue.Queue()
 
 
@@ -28,8 +28,9 @@ def consumer(id_num):
         except queue.Empty:
             pass
         else:
-            with safe_print:
-                print(f'consumer {id_num} got => {data}')
+            # with safe_print:
+            #     print(f'consumer {id_num} got => {data}')
+            print(f'consumer {id_num} got => {data}')
 
 
 if __name__ == '__main__':

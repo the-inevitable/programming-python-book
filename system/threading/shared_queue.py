@@ -26,7 +26,7 @@ def consumer(id_num):
         try:
             data = data_queue.get(block=False)
         except queue.Empty:
-            pass
+            print('Empty queue.')
         else:
             # with safe_print:
             #     print(f'consumer {id_num} got => {data}')

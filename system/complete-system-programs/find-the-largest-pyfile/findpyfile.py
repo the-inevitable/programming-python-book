@@ -18,4 +18,4 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Find the largest file.')
 
     parser.add_argument('--path', required=True)
-    parser.add_argument('--ext', required=True)love vladika from danochka
+    parser.add_argument('--ext', required=True)

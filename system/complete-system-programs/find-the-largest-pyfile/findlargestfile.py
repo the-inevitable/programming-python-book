@@ -3,18 +3,29 @@ Find the largest file with a given extension in a given directory.
 """
 
 import os
-import glob
 import argparse
+
+debug = False
 
 
 def find_largest_file(path, ext):
-    all_files = glob.glob(os.sep.join([path, '*.' + ext]))
-    all_sizes = [os.path.getsize(filename) for filename in all_files]
-    # all_sizes_dict = {filename: file_size for (filename, file_size) in zip(all_files, all_sizes)}
-    # largest_file = ''.join([name for name in all_sizes_dict if all_sizes_dict[name] == max(all_sizes)])
-    # return largest_file
-    sorted_size_files = sorted(list(zip(all_files, all_sizes)), key=lambda x: x[1])
-    return sorted_size_files[-1] if len(sorted_size_files) else f'No files with extension {ext}'
+    all_sizes = []
+    for (dir_name, sub_dirs, file_names) in os.walk(path):
+        for file_name in file_names:
+            if file_name.endswith(ext):
+                full_name = os.path.join(dir_name, file_name)
+                full_name_size = os.path.getsize(full_name)
+                if debug:
+                    print(dir_name, full_name, full_name_size)
+                all_sizes.append(
+                    (full_name, full_name_size)
+                )
+    if not all_sizes:
+        return f'Could not find files with extension "{ext}" to compare in {path}.'
+    all_sizes.sort(key=lambda x: x[1], reverse=True)
+    largest_name = all_sizes[0][0]
+    largest_size = round(all_sizes[0][1] / 1024 / 1024, 3)
+    return f'The largest file in the "{path}" is: {largest_name} with the size of {largest_size} Mb.'
 
 
 if __name__ == '__main__':
@@ -31,7 +42,7 @@ if __name__ == '__main__':
         '--ext',
         help='File extension to find. ("txt", "py", "java")',
         type=str,
-        default='*',
+        default='',
     )
 
     args = parser.parse_args()

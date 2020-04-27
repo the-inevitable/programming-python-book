@@ -10,9 +10,11 @@ import argparse
 def find_largest_file(path, ext):
     all_files = glob.glob(os.sep.join([path, '*.' + ext]))
     all_sizes = [os.path.getsize(filename) for filename in all_files]
-    all_sizes_dict = {filename: file_size for (filename, file_size) in zip(all_files, all_sizes)}
-    largest_file = ''.join([name for name in all_sizes_dict if all_sizes_dict[name] == max(all_sizes)])
-    return largest_file
+    # all_sizes_dict = {filename: file_size for (filename, file_size) in zip(all_files, all_sizes)}
+    # largest_file = ''.join([name for name in all_sizes_dict if all_sizes_dict[name] == max(all_sizes)])
+    # return largest_file
+    sorted_size_files = sorted(list(zip(all_files, all_sizes)), key=lambda x: x[1])
+    return sorted_size_files[-1] if len(sorted_size_files) else f'No files with extension {ext}'
 
 
 if __name__ == '__main__':
@@ -29,8 +31,7 @@ if __name__ == '__main__':
         '--ext',
         help='File extension to find. ("txt", "py", "java")',
         type=str,
-        default='py',
-        required=True
+        default='*',
     )
 
     args = parser.parse_args()

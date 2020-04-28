@@ -45,7 +45,6 @@ def split_file(path_to_file, path_to_parts, size):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Split one large file into chunk of given size')
-
     parser.add_help = True
 
     parser.add_argument(

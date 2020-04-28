@@ -1,5 +1,6 @@
 """
 Splits a large file into chunks of given size.
+All provided paths must be absolute.
 """
 
 import os

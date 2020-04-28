@@ -1,6 +1,7 @@
 """
 Joins parts of a file from splitfile.py into a single file.
 Parts must have name in a format of 'partN' where N is a part number.
+All provided paths must be absolute.
 """
 
 import os

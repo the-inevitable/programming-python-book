@@ -9,11 +9,11 @@ import sys
 import argparse
 
 
-kb = 1024
-mb = 1024 * kb
-
-
 def join_parts(path_to_parts, path_to_file):
+    if not all([filename.startswith('part') for filename in os.listdir(path_to_parts)]):
+        print(f'All file parts must have a name in format of "partN", where N is a part number.')
+        sys.exit()
+
     if not (os.path.isdir(path_to_parts) and os.path.exists(path_to_parts)):
         print(f'Directory {os.path.abspath(path_to_parts)} does not exist or is empty.')
 

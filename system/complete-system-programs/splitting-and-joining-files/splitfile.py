@@ -57,9 +57,7 @@ if __name__ == '__main__':
 
     parser.add_argument(
         '--pathToParts',
-        help='''
-            Path to a directory for the file parts. If it doesn't exist - it will be created.
-        ''',
+        help="Path to a directory for the file parts. If it doesn't exist - it will be created.",
         type=str,
         required=True
     )

@@ -18,7 +18,7 @@ def join_parts(path_to_parts, path_to_file):
         print(f'Directory {os.path.abspath(path_to_parts)} does not exist or is empty.')
 
     if os.path.exists(path_to_file):
-        consent = input(f'File with path {path_to_file} already exists. It will be overwritten. Continue? (yes/no):\n')
+        consent = input(f'File with path {path_to_file} already exists. It will be overwritten.\nContinue? (yes/no):\n')
         if consent not in ('yes', 'y'):
             print('Exiting.')
             sys.exit()

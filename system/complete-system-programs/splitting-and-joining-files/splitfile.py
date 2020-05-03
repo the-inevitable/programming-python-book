@@ -16,7 +16,7 @@ def split_file(path_to_file, path_to_parts, size):
         print(f'Creating directory {os.path.abspath(path_to_parts)}')
         os.mkdir(path_to_parts)
     else:
-        consent = input(f'All files in {path_to_parts} directory will be removed. Continue? (yes/no):\n')
+        consent = input(f'All files in {path_to_parts} directory will be removed.\nContinue? (yes/no):\n')
         if consent in ('yes', 'y'):
             print(f'Removing all files from directory {os.path.abspath(path_to_parts)}')
             for filename in os.listdir(path_to_parts):

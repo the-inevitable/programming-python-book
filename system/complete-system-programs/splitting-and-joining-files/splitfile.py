@@ -13,7 +13,7 @@ mb = 1024 * kb
 
 def split_file(path_to_file, path_to_parts, size):
     if not os.path.exists(path_to_parts):
-        print(f'Creating directory {os.path.abspath(path_to_parts)}')
+        print(f'Creating directory {os.path.abspath(path_to_parts)}...')
         os.mkdir(path_to_parts)
     else:
         consent = input(f'All files in {path_to_parts} directory will be removed.\nContinue? (yes/no):\n')

@@ -9,6 +9,16 @@ class Counter:
         self.count += 1
 
 
+class LockingCounter:
+    def __init__(self):
+        self.lock = threading.Lock()
+        self.count = 0
+
+    def increment(self):
+        with self.lock:
+            self.count += 1
+
+
 def worker(local_items, local_counter):
     for _ in range(local_items):
         local_counter.increment()
@@ -27,7 +37,10 @@ def run_threads(func, local_items, local_counter):
 
 items = 100000
 counter = Counter()
+locking_counter = LockingCounter()
 
 run_threads(worker, items, counter)
+run_threads(worker, items, locking_counter)
 
 print(f'Counter should be {5 * 100000}. Found {counter.count}')
+print(f'Counter should be {5 * 100000}. Found {locking_counter.count}')

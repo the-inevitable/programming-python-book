@@ -1,5 +1,5 @@
-from tkinter import Label
+from tkinter import *
 
 widget = Label(None, text='Hello GUI World!')
-widget.pack()
+widget.pack(expand=YES, fill=BOTH)
 widget.mainloop()
